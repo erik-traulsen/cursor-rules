@@ -1,0 +1,57 @@
+---
+alwaysApply: false
+---
+
+# Task Execution Protocol
+
+## Goal: Execute approved task checklists systematically with production safety
+
+**Prerequisites**: Implementation plan must be reviewed and converted to checklist format via @03-prd-review.mdc
+
+## Execution Protocol
+- **ONE Task at a Time** - Execute single sub-task, wait for user "yes" to continue
+- **Mark Progress** - Change '[ ]' to ' [x]' when complete, update task file
+- **No Batch Processing** - Never attempt multiple tasks simultaneously
+
+## Progress Tracking
+1. **Complete Sub-Task** - Mark '[x]' immediately
+2. **Check Parent** - Mark parent '[x]' if all children complete
+3. **Update Files** - Save progress to task list
+4. **Wait for Approval** - Pause forguser "yes" before next task
+
+## Production Safety Checklist
+- [ ] **Verify Paths** - Use codebase_search to confirm file locations
+- [ ] **Real Data Only** - Actual Supabase tables, Railway endpoints
+- [ ] **No Placeholders** - All code must be production-ready
+- [ ] **Error Handling** - Include proper validation and error states
+
+## Layer Execution Order
+1. **Database (1.0)** - Migrations, schema changes
+2. **Backend (2.0)** - API endpoints, business logic
+3. **Network (3.0)** - SharedWorkoutVoiceKit integration
+4. **Frontend (4.0)** - 105 views, ViewModels
+5. **Testing (5.0)** - Unit tests, QA validation
+
+## 🛑 Stop Immediately If:
+- Task file is not in proper checklist format
+- Database migration fails
+- API returns 500 errors
+- iOS app crashes
+- Placeholder/mock code detected
+- User requests clarification
+
+## Task File Format
+``` markdown
+## Relevant Files
+- `path/to/file.swift` - [Brief description]
+
+## Tasks
+- [x] 1.1 [Completed task]
+- [ ] 1.2 [Current task]
+
+## A AI Instructions
+1. **Check Next Task** - Identify current uncompleted `[ ]` sub-task
+2. **Execute Single Task** - Complete only current item
+3. **Update Progress** - Mark `[x]` and save file
+4. **Wait for Approval** - Get user "yes" before continuing
+5. **Never Skip Format** - If plan isn't in checklist format, redirect to 003-prd-review.mdc first
