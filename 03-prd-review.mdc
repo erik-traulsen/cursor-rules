@@ -1,0 +1,99 @@
+---
+alwaysApply: false
+---
+# PRD Review & Implementation Readiness Check
+
+## 🎯 Goal
+- Validate PRDs from `@02-prd-create.mdc` and convert them into an executable checklist ready for `@04-prd-execute.mdc`.
+
+## 🧠 Reference Architecture
+- **Frontend**: @frontend/README.md - iOS SwiftUI, MVVM patterns
+- **Backend**: @backend/README.md - FastAPI services, API endpoints
+- **API Contracts**: @shared/docs/api-contracts/ - Complete API specifications
+
+## Inputs
+- Link to PRD and/or PR description
+- Referenced files list (verify via `codebase_search`)
+- Proposed API/schema changes and contract diffs (if any)
+- Gherkin stories and success metrics
+
+## Reviewer Roles
+- **PM (User)**: Confirms scope, non-goals, success metrics; final approval
+- **Tech Lead**: Verifies feasibility, file mapping, contracts, risks, safety
+
+## Pre-Review Checklist (Author)
+- PRD includes all Required Components from `@02-prd-create.mdc`
+- All referenced files exist; paths verified via `codebase_search`
+- API contracts updated or draft diffs proposed
+- Non-Goals defined; scope boundaries explicit
+- QA strategy covers Gherkin scenarios and edge cases
+
+## Quality Gates
+- No mocks/placeholders/TODOs in critical paths
+- File verification complete; paths match architecture guides
+- Dependencies available (DB, endpoints, env, secrets)
+- Error states and failure modes addressed
+- Success metrics measurable or instrumentation plan defined
+
+## Review Protocol
+1. Read PRD: scope, goals, non-goals, success metrics
+2. Check references: frontend/backend READMEs and API contracts
+3. Verify affected files via `codebase_search`; correct or add missing paths
+4. Walk each Gherkin scenario; identify gaps, edges, risks
+5. Propose 1–2 solution paths with trade-offs; explain why
+6. Flag `// PLACEHOLDER` or missing artifacts; block if critical
+7. Convert PRD to executable checklist (template below) and attach to PR
+8. Score completeness and request approvals
+
+## Scoring Rubric (0–10)
+- Context completeness (0–2)
+- Scenario coverage (0–2)
+- File mapping accuracy (0–2)
+- Contracts/schema readiness (0–2)
+- QA & metrics readiness (0–2)
+
+Approval threshold: ≥ 8/10 with no critical blockers
+
+## MANDATORY: Executable Checklist
+- Create a task file that `@04-prd-execute.mdc` can run directly
+- Location: attach in PR and/or `shared/tasks/YYYY-MM-DD-[type]-desc.md`
+
+Checklist template:
+```markdown
+## Relevant Files
+- `path/to/file.swift` - [Brief description]
+- `path/to/endpoint.py` - [Brief description]
+
+## Tasks
+- [ ] 1.0 Phase 1: Setup
+  - [ ] 1.1 Add endpoint POST /api/v1/example
+  - [ ] 1.2 Update ViewModel state transitions
+- [ ] 2.0 Phase 2: Edge Cases
+  - [ ] 2.1 Handle 401/403 redirects
+  - [ ] 2.2 Add retry/backoff for network errors
+
+## QA
+- [ ] Happy path passes for each Gherkin
+- [ ] Edge cases verified
+
+## Metrics
+- [ ] Instrument success metric X
+```
+
+## Reviewer Behavior (from `@01-about-me.mdc`)
+- No fluff; push back on unclear scope
+- Steelman and strawman; recommend with rationale
+- Explain why; call out trade-offs
+- Flag placeholders with `// PLACEHOLDER`
+- Only user can confirm success after manual QA
+
+## Output Requirements
+- **Format**: Markdown `.md`
+- **Location**: PR comment + `shared/tasks/YYYY-MM-DD-[type]-desc.md` (optional)
+- **Audience**: Junior developer with no context
+- **Current Date**: Use system date for filenames
+
+## Workflow Integration
+1. **PRD Creation** (@02-prd-create.mdc)
+2. **PRD Review** (this rule)
+3. **Task Execution** (@04-prd-execute.mdc)
