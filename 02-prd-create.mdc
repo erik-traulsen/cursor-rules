@@ -1,0 +1,55 @@
+---
+alwaysApply: false
+---
+# PRD Creation Rules
+
+## 🎯 Goal: Create comprehensive implementation plans for features
+
+## 🧠 Reference Architecture
+- **Frontend**: @frontend/README.md - iOS SwiftUI, MVVM patterns
+- **Backend**: @backend/README.md - FastAPI services, API endpoints
+- **API Contracts**: @shared/docs/api-contracts/ - Complete API specifications
+<!-- - **Production Database**: Supabase ('rrbeeirvxwyusbgpbgul') -->
+<!-- - **Production API**: 'https://voiceaiworkouttracker-production.up.railway.app -->
+
+## Required Components
+- **Summary** - Clear goal statement
+- **Gherkin Stories** - Given/When/Then scenarios
+- **Affected Files** - Real file paths (use codebase_search first)
+- **Git Strategy** - Branch naming, commit checkpoints
+- **QA Strategy** - LLM self-test + manual user verification
+
+## Step 1: Core Areas to Explore
+- **Investigation** - What unknowns need resolution?
+- **Expected Behavior** - Gherkin stories (Given/When/Then)
+- **Core Functionality** - Key user actions
+- **Scope/Boundaries** - What this should NOT do
+- **File Requirements** - What files need changes
+- **Data Schema** - Backend schema changes needed?
+- **Design/UI** - Missing designs or mockups?
+- **State/Interactions** - Follow @state-management.md
+
+## Step 2: Implementation Plan Components
+- **Goals** - What we're achieving and how
+- **Gherkin User Stories** - Detailed expected behaviors
+- **Functional Requirements** - Numbered, specific functionalities
+- **Non-Goals** - Clear scope boundaries
+- **Success Metrics** - Measurable criteria
+- **Affected Files** - Include files paths (search first!)
+- **Git strategy** - Branch naming, commit checkpoints
+
+## File Discover Rules
+- **Search First** - Use `codebase_search` before assuming paths
+- **Verify Locations** - Check actual file locations before planning
+- **Read READMEs** - Check frontend/backend guides before creating new endpoints
+- **Check API Contracts** - Reference existing endpoint patterns and data models
+
+## Output Requirements
+- **Format**: Markdown `.md`
+- **Location**: `shared/implementation-plans/YYYY-MM-DD-[type]-desc.md`
+- **Audience**: Junior developer with no context
+- **Current Date**: Check system time for timestamps
+
+## Workflow Integration 
+1. **PRD Creation** (this rule) → 2. **PRD Review** (@03-prd-review.mdc) → 3. **Task Generation** (@08-generate-task.mdc) → 4. **Task Execution** (@09-process-tasks.mdc)
+<!-- This needs to be updated since 08 and 09 don't exist -->
